@@ -24,9 +24,22 @@ btnCreate.onclick = function () {
         return;
     }
 
-    
+    const div = createShape();
+
+    const gridItem = document.querySelector(`.c${rowNumber}-${colNumber}`); //Find grid item through rowNumber and colNumber
+    gridItem.appendChild(div);
+
+    colNumber++;    
+    if (colNumber === 6) {
+        rowNumber--;
+        colNumber = 1;
+    }
+   
+}
+
+function createShape() {
     const div = document.createElement("div"); //Create div
-     
+
     switch (selShape.value) {
         case "Circle":
             div.className = "circle"; //Assign  class to div
@@ -46,21 +59,13 @@ btnCreate.onclick = function () {
             square.colorValue = selColor.value;
             div.id = shapeArr.length; //Find shape reference in array through index
             shapeArr.push(square); //Add shape reference to array
-           
+
             break;
     }
-   
+
     div.addEventListener("click", function () {
-        msg.innerHTML = `Unit${parseInt(this.id) + 1}: ${shapeArr[parseInt(this.id)].getInfo() }`;
+        msg.innerHTML = `Unit${parseInt(this.id) + 1}: ${shapeArr[parseInt(this.id)].getInfo()}`;
     });
 
-    const gridItem = document.querySelector(`.c${rowNumber}-${colNumber}`); //Find grid item through rowNumber and colNumber
-    gridItem.appendChild(div);
-
-    colNumber++;    
-    if (colNumber === 6) {
-        rowNumber--;
-        colNumber = 1;
-    }
-   
+    return div;
 }
