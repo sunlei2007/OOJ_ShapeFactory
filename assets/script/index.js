@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-import { Shape } from "./shape.js?v=1.1"
+import { Shape } from "./shape.js?v=1.1" //import shape.js
 
 const btnCreate = document.querySelector(".create-cls");
 const selShape = document.querySelector(".shape");
@@ -64,7 +64,7 @@ function createShape() {
     }
 
     div.addEventListener("click", function () {
-        msg.innerHTML = `Unit${parseInt(this.id) + 1}: ${shapeArr[parseInt(this.id)].getInfo()}`;
+        msg.innerHTML = `Unit${parseInt(this.id) + 1}: ${shapeArr[parseInt(this.id)].getInfo()}`; //Call getInfo() in array 
     });
 
     return div;
